@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(padding: EdgeInsets.symmetric(horizontal: 30.0),
-            child: Image.asset('logo.png',width: 250,),
+            child: Image.asset('logo.png',width: 150,),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
