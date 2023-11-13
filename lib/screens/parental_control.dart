@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/parental_control_items.dart';
+import 'block_site.dart';
 
 class ParentalControl extends StatefulWidget {
   const ParentalControl({Key? key}) : super(key: key);
@@ -47,9 +48,33 @@ class _ParentalControlState extends State<ParentalControl> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CircleShortcut(name: "Block/Unblock\nSites", imageUrl: 'block sites.svg',),
-                  CircleShortcut(name: "Choco\nChat", imageUrl: 'chat.png'),
-                  CircleShortcut(name: "Intelligent\nService", imageUrl: 'intelligent_img.png'),
+                  CircleShortcut(name: "Block/Unblock\nSites", imageUrl: 'block_sites.svg',circleColor: Colors.red,onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SiteBlockerScreen(),
+                      ),
+                    );
+                  },
+                  ),
+                  CircleShortcut(name: "Choco\nChat", imageUrl: 'chat.png',circleColor: Colors.grey,onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => YourDestinationScreen(),
+                    //   ),
+                    // );
+                  },
+                  ),
+                  CircleShortcut(name: "Intelligent\nService", imageUrl: 'intelligent_img.png',circleColor: Colors.greenAccent,onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => YourDestinationScreen(),
+                    //   ),
+                    // );
+                  },
+                  ),
                 ],
               ),
             ),
@@ -57,9 +82,31 @@ class _ParentalControlState extends State<ParentalControl> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CircleShortcut(name: "Choco\nEngine", imageUrl: 'Choco_engine_img.png',),
-                  CircleShortcut(name: "Setup Child\nProfile", imageUrl: 'child_profile_img.png'),
-                  CircleShortcut(name: "Browser\nSettings", imageUrl: 'browser_settings_img.png'),
+                  CircleShortcut(name: "Choco\nEngine", imageUrl: 'Choco_engine_img.png',onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => YourDestinationScreen(),
+                    //   ),
+                    // );
+                  },
+                  ),
+                  CircleShortcut(name: "Setup Child\nProfile", imageUrl: 'child_profile_img.png',circleColor: Colors.yellow,onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => YourDestinationScreen(),
+                    //   ),
+                    // );
+                  },),
+                  CircleShortcut(name: "Browser\nSettings", imageUrl: 'browser_settings_img.png',circleColor: Colors.grey,onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => YourDestinationScreen(),
+                    //   ),
+                    // );
+                  },),
                 ],
               ),
             ),
