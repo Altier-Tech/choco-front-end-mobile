@@ -3,12 +3,16 @@ import 'package:choco/screens/home_screen.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() {
-  runApp(
-    DevicePreview(
+  var devicePre = false;
+
+  if (devicePre) {
+    runApp(DevicePreview(
       //enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
-  );
+      builder: (context) => const MyApp(),
+    ));
+  } else {
+    runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
