@@ -128,8 +128,18 @@ class _BrowserPageState extends State<BrowserPage> {
 
   _buildBottomWidget() {
     return BottomNavigationBar(
-      onTap: (value) {
-        //TODO
+      onTap: (int index) {
+        switch (index) {
+          case 0: // Back
+            webViewController.goBack();
+            break;
+          case 1: // Forward
+            webViewController.goForward();
+            break;
+          case 2: // Reload
+            webViewController.reload();
+            break;
+        }
       },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.arrow_back), label: "Back"),
