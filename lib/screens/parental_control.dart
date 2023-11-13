@@ -30,7 +30,7 @@ class _ParentalControlState extends State<ParentalControl> {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 10),
               child: Container(
                 width: 350,
                 height: 200,
@@ -50,6 +50,12 @@ class _ParentalControlState extends State<ParentalControl> {
                   ),
                 ),
               ),
+            ),
+            Center(
+              child: Text("Protect your child online",style: TextStyle(color: Colors.purple,fontSize: 15),),
+            ),
+            Center(
+              child: Text("Safeguard their browsing experience\nand steer clear of unwanted content",style: TextStyle(color: Colors.black,fontSize: 10),),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
