@@ -44,7 +44,7 @@ class _ContainerWithSwitchState extends State<ContainerWithSwitch> {
         width: 350,
         height: 50,
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: Colors.grey[400],
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(

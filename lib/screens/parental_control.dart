@@ -35,7 +35,7 @@ class _ParentalControlState extends State<ParentalControl> {
                 width: 350,
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: Colors.grey[400],
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                     color: Colors.blue, // Set the border color
@@ -82,29 +82,17 @@ class _ParentalControlState extends State<ParentalControl> {
                       );
                     },
                   ),
-<<<<<<< Updated upstream
                   CircleShortcut(
-                    name: "Intelligent\nService",
-                    imageUrl: 'intelligent_img.png',
-                    circleColor: Colors.greenAccent,
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => YourDestinationScreen(),
-                      //   ),
-                      // );
-                    },
-=======
-                  CircleShortcut(name: "Intelligent\nService", imageUrl: 'intelligent_img.png',circleColor: Colors.greenAccent,onTap: () {
-                    Navigator.push(
+                      name: "Intelligent\nService",
+                      imageUrl: 'intelligent_img.png',
+                      circleColor: Colors.greenAccent,onTap: () {
+                      Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => IntelligentService(),
                       ),
                     );
                   },
->>>>>>> Stashed changes
                   ),
                 ],
               ),

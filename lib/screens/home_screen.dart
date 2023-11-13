@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:choco/screens/test_browser_page.dart';
 import '../models/shortcuts.dart';
 import '../models/side_navigation.dart';
+import 'choco_chat.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 80),
+        padding: const EdgeInsets.symmetric(vertical: 40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           //crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,6 +75,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               }),
             ),
+            Padding(padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                SizedBox(
+                  width: 250,
+                  height: 50,
+                  child: ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
+                  },
+                  child: Text('Choco Chat',style: TextStyle(fontSize: 20),),
+              ),
+                ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
+                    },
+                    child: Image.asset(
+                      'assets/chat.png',
+                      width: 90,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            //Divider(),
             Padding(padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
