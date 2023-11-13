@@ -1,4 +1,4 @@
-import 'package:chatgpt_client/api/chat_api.dart';
+import 'package:choco/gpt/chat_api.dart';
 import 'package:choco/gpt/chat_message_model.dart';
 import 'message_bubble.dart';
 import 'message_composer.dart';
