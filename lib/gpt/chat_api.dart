@@ -1,6 +1,7 @@
 import 'package:dart_openai/openai.dart';
 
 import 'chat_message_model.dart';
+import 'secrets.dart';
 
 class ChatApi {
   static const _model = 'gpt-3.5-turbo';
