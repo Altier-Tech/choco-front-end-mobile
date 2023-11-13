@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
-      title: 'Choco Browser',
+      title: 'Choco',
       home: HomeScreen(),
     );
   }
