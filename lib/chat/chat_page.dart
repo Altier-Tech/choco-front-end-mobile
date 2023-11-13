@@ -55,12 +55,15 @@ class _ChatPageState extends State<ChatPage> {
       _awaitingResponse = true;
     });
     try {
+      print('Before calling completeChat');
       final response = await widget.chatApi.completeChat(_messages);
+      print('After calling completeChat');
       setState(() {
         _messages.add(ChatMessage(response, false));
         _awaitingResponse = false;
       });
     } catch (err) {
+      print('Caught an error: $err');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('An error occurred. Please try again.')),
       );

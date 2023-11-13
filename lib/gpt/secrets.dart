@@ -1,2 +1,2 @@
-const openAiApiKey = 'YOUR_API_KEY';
-const openAiOrg = 'YOUR_ORGANIZATION_ID';
+const openAiApiKey = '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';
+const openAiOrg = 'org-uOblGeejHi4TV01pocBBxZ3q';
