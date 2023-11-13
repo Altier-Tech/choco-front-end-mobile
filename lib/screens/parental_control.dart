@@ -1,3 +1,4 @@
+import 'package:choco/chat/chat_page.dart';
 import 'package:choco/gpt/chat_api.dart';
 import 'package:flutter/material.dart';
 
@@ -75,7 +76,7 @@ class _ParentalControlState extends State<ParentalControl> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ChatScreen(),
+                          builder: (context) => ChatPage(chatApi: chatApi),
                         ),
                       );
                     },
