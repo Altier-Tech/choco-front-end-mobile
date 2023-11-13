@@ -1,6 +1,6 @@
 import 'package:chatgpt_client/api/chat_api.dart';
 import 'package:chatgpt_client/models/chat_message.dart';
-import 'package:chatgpt_client/widgets/message_bubble.dart';
+import 'message_bubble.dart';
 import 'message_composer.dart'
 import 'package:flutter/material.dart';
 
