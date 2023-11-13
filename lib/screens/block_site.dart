@@ -19,6 +19,12 @@ class _SiteBlockerScreenState extends State<SiteBlockerScreen> {
     }
   }
 
+  void _deleteSite(int index) {
+    setState(() {
+      blockedSites.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +65,10 @@ class _SiteBlockerScreenState extends State<SiteBlockerScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(blockedSites[index]),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () => _deleteSite(index),
+                    ),
                   );
                 },
               ),

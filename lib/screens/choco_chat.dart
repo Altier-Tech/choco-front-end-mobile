@@ -39,11 +39,15 @@ class ChatScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 8.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Send button action
-                    },
-                    child: Text('Send'),
+                  CircleAvatar(
+                    backgroundColor: Colors.blue,
+                    radius: 25.0,
+                    child: IconButton(
+                      icon: Icon(Icons.send, color: Colors.white),
+                      onPressed: () {
+                        // Send button action
+                      },
+                    ),
                   ),
                 ],
               ),
