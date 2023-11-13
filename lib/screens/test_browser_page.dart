@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class BrowserPage extends StatefulWidget {
   const BrowserPage({Key? key}) : super(key: key);
@@ -9,7 +8,6 @@ class BrowserPage extends StatefulWidget {
 }
 
 class _BrowserPageState extends State<BrowserPage> {
-
   late TextEditingController textEditingController;
   //late WebViewController webViewController;
 
@@ -46,23 +44,28 @@ class _BrowserPageState extends State<BrowserPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: WillPopScope(child: Scaffold(
-      body: Column(
-        children: [
-          _buildTopWidget(),
-          _buldLoadingWidget(),
-          Expanded(child: _buildWebWidget(),),
-          _buildBottomWidget(),
-        ],
-      ),
-    ), onWillPop: onWillPop));
+    return SafeArea(
+        child: WillPopScope(
+            onWillPop: onWillPop,
+            child: Scaffold(
+              body: constColumn(
+                children: [
+                  _buildTopWidget(),
+                  _buldLoadingWidget(),
+                  Expanded(
+                    child: _buildWebWidget(),
+                  ),
+                  _buildBottomWidget(),
+                ],
+              ),
+            )));
   }
 
   Future<bool> onWillPop() {
     return Future.value(false);
   }
 
-  loadUrl(String value){
+  loadUrl(String value) {
     // Uri uri = Uri.parse(value);
     // if(!uri.isAbsolute){
     //   uri = Uri.parse("${searchEngineUrl}search?q=$value");
@@ -82,22 +85,28 @@ class _BrowserPageState extends State<BrowserPage> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(onPressed: (){
-              loadUrl(searchEngineUrl);
-            }, icon: const Icon(Icons.home),),
-            Expanded(child: TextField(
+            IconButton(
+              onPressed: () {
+                loadUrl(searchEngineUrl);
+              },
+              icon: const Icon(Icons.home),
+            ),
+            Expanded(
+                child: TextField(
               controller: textEditingController,
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Search or type url",
               ),
-              onSubmitted: (value){
+              onSubmitted: (value) {
                 loadUrl(value);
               },
             )),
-            IconButton(onPressed: (){
-              textEditingController.clear();
-            }, icon:  const Icon(Icons.cancel)),
+            IconButton(
+                onPressed: () {
+                  textEditingController.clear();
+                },
+                icon: const Icon(Icons.cancel)),
           ],
         ),
       ),
@@ -108,23 +117,25 @@ class _BrowserPageState extends State<BrowserPage> {
     return Container(
       height: 2,
       color: Colors.grey,
-      child: isLoading? const LinearProgressIndicator(): Container(),
+      child: isLoading ? const LinearProgressIndicator() : Container(),
     );
   }
 
   _buildWebWidget() {
-    return Placeholder();
+    return const Placeholder();
   }
 
   _buildBottomWidget() {
     return BottomNavigationBar(
-      onTap: (value){
+      onTap: (value) {
         //TODO
       },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.arrow_back), label: "Back"),
-        BottomNavigationBarItem(icon: Icon(Icons.arrow_forward), label: "Forward"),
-        BottomNavigationBarItem(icon: Icon(Icons.replay_outlined), label: "Reload"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward), label: "Forward"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.replay_outlined), label: "Reload"),
       ],
       showSelectedLabels: false,
       showUnselectedLabels: false,
@@ -132,4 +143,6 @@ class _BrowserPageState extends State<BrowserPage> {
       selectedItemColor: Colors.black54,
     );
   }
+
+  constColumn({required List children}) {}
 }
