@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/parental_control_items.dart';
 import 'block_site.dart';
+import 'choco_chat.dart';
 
 class ParentalControl extends StatefulWidget {
   const ParentalControl({Key? key}) : super(key: key);
@@ -58,12 +59,12 @@ class _ParentalControlState extends State<ParentalControl> {
                   },
                   ),
                   CircleShortcut(name: "Choco\nChat", imageUrl: 'chat.png',circleColor: Colors.grey,onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => YourDestinationScreen(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatScreen(),
+                      ),
+                    );
                   },
                   ),
                   CircleShortcut(name: "Intelligent\nService", imageUrl: 'intelligent_img.png',circleColor: Colors.greenAccent,onTap: () {
