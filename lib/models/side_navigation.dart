@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/parental_control.dart';
+
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,9 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.shield),
             title: const Text("Parental Control"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentalControl()));
+            },
           ),
           const Divider(),
           ListTile(
