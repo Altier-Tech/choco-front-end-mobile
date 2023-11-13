@@ -43,12 +43,24 @@ class _SiteBlockerScreenState extends State<SiteBlockerScreen> {
                     controller: _webAddressController,
                     decoration: InputDecoration(
                       hintText: 'Enter web address',
+                      filled: true, // Set to true to enable background color
+                      fillColor: Colors.grey[200], // Set your desired background color
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20), // Set border radius
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: _blockSite,
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue, // Set your desired button background color
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20), // Set button border radius
+                    ),
+                    minimumSize: Size(120, 60), // Set your desired button height
+                  ),
                   child: Text('Block'),
                 ),
               ],

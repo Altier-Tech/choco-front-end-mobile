@@ -72,7 +72,7 @@ class _ParentalControlState extends State<ParentalControl> {
                   CircleShortcut(
                     name: "Choco\nChat",
                     imageUrl: 'chat.png',
-                    circleColor: Colors.grey,
+                    circleColor: Colors.black12,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -130,7 +130,7 @@ class _ParentalControlState extends State<ParentalControl> {
                   CircleShortcut(
                     name: "Browser\nSettings",
                     imageUrl: 'browser_settings_img.png',
-                    circleColor: Colors.grey,
+                    circleColor: Colors.white38,
                     onTap: () {
                       // Navigator.push(
                       //   context,
