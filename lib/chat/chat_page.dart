@@ -1,5 +1,5 @@
 import 'package:chatgpt_client/api/chat_api.dart';
-import 'chat_message.dart';
+import 'chat_message_model.dart';
 import 'message_bubble.dart';
 import 'message_composer.dart';
 import 'package:flutter/material.dart';
