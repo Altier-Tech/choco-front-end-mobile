@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/parental_control_items.dart';
 import 'block_site.dart';
 import 'choco_chat.dart';
+import 'intelligent_service.dart';
 
 class ParentalControl extends StatefulWidget {
   const ParentalControl({Key? key}) : super(key: key);
@@ -81,6 +82,7 @@ class _ParentalControlState extends State<ParentalControl> {
                       );
                     },
                   ),
+<<<<<<< Updated upstream
                   CircleShortcut(
                     name: "Intelligent\nService",
                     imageUrl: 'intelligent_img.png',
@@ -93,6 +95,16 @@ class _ParentalControlState extends State<ParentalControl> {
                       //   ),
                       // );
                     },
+=======
+                  CircleShortcut(name: "Intelligent\nService", imageUrl: 'intelligent_img.png',circleColor: Colors.greenAccent,onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => IntelligentService(),
+                      ),
+                    );
+                  },
+>>>>>>> Stashed changes
                   ),
                 ],
               ),
