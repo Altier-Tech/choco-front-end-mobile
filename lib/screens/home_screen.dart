@@ -1,4 +1,5 @@
 import 'package:choco/browser/webview_page.dart';
+import 'package:choco/screens/settings.dart';
 import 'package:flutter/material.dart';
 import '../models/shortcuts.dart';
 import '../models/side_navigation.dart';
@@ -27,7 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // Handle setting icon tap
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
             },
           ),
         ],
