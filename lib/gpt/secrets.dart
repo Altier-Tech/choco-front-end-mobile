@@ -1,2 +1,2 @@
-const openAiApiKey = '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';
-const openAiOrg = 'org-uOblGeejHi4TV01pocBBxZ3q';
+// const openAiApiKey = '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';
+// const openAiOrg = 'org-qyVHMBk0TTYXyMjsB8kxXxaJ';

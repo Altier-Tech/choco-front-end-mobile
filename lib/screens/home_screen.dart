@@ -1,8 +1,10 @@
 import 'package:choco/browser/webview_page.dart';
+import 'package:choco/chat/chat_page.dart';
+import 'package:choco/gpt/chat_api.dart';
 import 'package:flutter/material.dart';
+
 import '../models/shortcuts.dart';
 import '../models/side_navigation.dart';
-import 'choco_chat.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ChatApi chatApi = ChatApi();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChatScreen()));
+                                  builder: (context) =>
+                                      ChatPage(chatApi: chatApi)));
                         },
                         child: const Text(
                           'Choco Chat',
@@ -108,7 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ChatScreen()));
+                                builder: (context) =>
+                                    ChatPage(chatApi: chatApi)));
                       },
                       child: Image.asset(
                         'assets/chat.png',
@@ -118,7 +124,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              //Divider(),
+              const Divider(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: Text("Favourite Websites"),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -133,15 +143,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     CircleShortcut(
                         name: "LMS",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://companyurlfinder.com/marketing/assets/img/logos/moodle.com.png'),
                     CircleShortcut(
                         name: "LinkedIn",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png'),
                     CircleShortcut(
                         name: "Sololearn",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://play-lh.googleusercontent.com/P6Ixu0T8hx2x80aCURUdcMW8poVuA4J0JQf8fw-XEa_NgzNSGUC1SNLkbT2ioo0lXfkC'),
                   ],
                 ),
               ),
@@ -154,20 +164,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     CircleShortcut(
                       name: "Github",
                       imageUrl:
-                          'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg',
+                          'https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png',
                     ),
                     CircleShortcut(
                         name: "Translator",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://assets-global.website-files.com/5d70d85d6d5a384776dc97e4/5fa291d4798cac440f517c21_google%20translate.png'),
                     CircleShortcut(
                         name: "Gmail",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://static.vecteezy.com/system/resources/previews/016/716/465/original/gmail-icon-free-png.png'),
                     CircleShortcut(
                         name: "Cisco",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://itamchannel.com/wp-content/uploads/2015/02/Cisco-Logo.jpeg'),
                   ],
                 ),
               ),

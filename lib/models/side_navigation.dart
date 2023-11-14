@@ -1,8 +1,14 @@
+import 'package:choco/screens/bookmarks.dart';
+import 'package:choco/screens/history.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/downloads.dart';
 import '../screens/parental_control.dart';
+import '../screens/settings.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -10,15 +16,15 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           const UserAccountsDrawerHeader(
-            accountName: Text("Thilina"),
-            accountEmail: Text("tilinadilshan1999@gmail.com"),
+            accountName: Text("Radioactive Bats"),
+            accountEmail: Text("radioactivebats@gmail.com"),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                  child: Image(
-                image: NetworkImage(
-                    "https://mastimorning.com/wp-content/uploads/2023/09/dp-photos.jpg"),
-                fit: BoxFit.cover,
-              )),
+                child: Image(
+                  image: AssetImage('assets/radioactive_bats.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             decoration: BoxDecoration(
                 color: Colors.blue,
@@ -31,17 +37,32 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.download),
             title: const Text("Downloads"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Downloads()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.access_time_sharp),
             title: const Text("History"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const History()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.star),
             title: const Text("Bookmarks"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Bookmarks()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.indeterminate_check_box_outlined),
@@ -52,14 +73,22 @@ class MyDrawer extends StatelessWidget {
             leading: const Icon(Icons.shield),
             title: const Text("Parental Control"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentalControl()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ParentalControl()));
             },
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text("Settings"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.help_outline),
