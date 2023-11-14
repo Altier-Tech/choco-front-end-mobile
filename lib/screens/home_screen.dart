@@ -141,11 +141,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     CircleShortcut(
                         name: "LinkedIn",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png'),
                     CircleShortcut(
                         name: "Sololearn",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://play-lh.googleusercontent.com/P6Ixu0T8hx2x80aCURUdcMW8poVuA4J0JQf8fw-XEa_NgzNSGUC1SNLkbT2ioo0lXfkC'),
                   ],
                 ),
               ),
@@ -158,20 +158,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     CircleShortcut(
                       name: "Github",
                       imageUrl:
-                          'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg',
+                          'https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png',
                     ),
                     CircleShortcut(
                         name: "Translator",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://assets-global.website-files.com/5d70d85d6d5a384776dc97e4/5fa291d4798cac440f517c21_google%20translate.png'),
                     CircleShortcut(
                         name: "Gmail",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://static.vecteezy.com/system/resources/previews/016/716/465/original/gmail-icon-free-png.png'),
                     CircleShortcut(
                         name: "Cisco",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://itamchannel.com/wp-content/uploads/2015/02/Cisco-Logo.jpeg'),
                   ],
                 ),
               ),
