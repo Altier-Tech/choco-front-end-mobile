@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40),
+          padding: const EdgeInsets.symmetric(vertical: 70),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             //crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,21 +146,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     CircleShortcut(
                       name: "YouTube",
-                      imageUrl:
-                          'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg',
+                      imagePath: 'assets/youtube.png',
+                      circleColor: Colors.white10,
                     ),
                     CircleShortcut(
                         name: "LMS",
-                        imageUrl:
-                            'https://companyurlfinder.com/marketing/assets/img/logos/moodle.com.png'),
+                        imagePath: 'assets/moodle.png',
+                      circleColor: Colors.white10,
+                    ),
                     CircleShortcut(
                         name: "LinkedIn",
-                        imageUrl:
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png'),
+                        imagePath: 'assets/linkedin.png',
+                      circleColor: Colors.white10,
+                    ),
                     CircleShortcut(
                         name: "Sololearn",
-                        imageUrl:
-                            'https://play-lh.googleusercontent.com/P6Ixu0T8hx2x80aCURUdcMW8poVuA4J0JQf8fw-XEa_NgzNSGUC1SNLkbT2ioo0lXfkC'),
+                        imagePath: 'assets/sololearn.jpg',
+                      circleColor: Colors.white10,
+                    ),
                   ],
                 ),
               ),
@@ -172,21 +175,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     CircleShortcut(
                       name: "Github",
-                      imageUrl:
-                          'https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png',
+                      imagePath: 'assets/github.png',
+                      circleColor: Colors.white10,
                     ),
                     CircleShortcut(
                         name: "Translator",
-                        imageUrl:
-                            'https://assets-global.website-files.com/5d70d85d6d5a384776dc97e4/5fa291d4798cac440f517c21_google%20translate.png'),
+                        imagePath: 'assets/google-translate.png',
+                      circleColor: Colors.white10,
+                    ),
                     CircleShortcut(
                         name: "Gmail",
-                        imageUrl:
-                            'https://static.vecteezy.com/system/resources/previews/016/716/465/original/gmail-icon-free-png.png'),
+                        imagePath: 'assets/gmail.png',
+                      circleColor: Colors.white10,
+                    ),
                     CircleShortcut(
                         name: "Cisco",
-                        imageUrl:
-                            'https://itamchannel.com/wp-content/uploads/2015/02/Cisco-Logo.jpeg'),
+                        imagePath: 'assets/cisco.png',
+                      circleColor: Colors.white10,
+                    ),
                   ],
                 ),
               ),
