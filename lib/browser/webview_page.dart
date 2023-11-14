@@ -13,6 +13,8 @@ class _BrowserPageState extends State<BrowserPage> {
       Completer<WebViewController>();
   final TextEditingController _urlController = TextEditingController();
 
+  var currentUrl = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +28,12 @@ class _BrowserPageState extends State<BrowserPage> {
                 (url.scheme == 'http' || url.scheme == 'https')) {
               var response = await http.get(url);
               List<String> keywords = [
-                "porn",
-                "sex",
-                "fuck"
-              ]; // replace with your keywords
+                "http://www.porhub.com/",
+                "https://www.porhub.com/",
+                "https://www.porhub.com"
+              ];
               bool explicitContentDetected =
-                  keywords.any((keyword) => response.body.contains(keyword));
+                  keywords.any((keyword) => (currentUrl == keyword));
               if (explicitContentDetected) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Explicit content detected")),
@@ -59,15 +61,24 @@ class _BrowserPageState extends State<BrowserPage> {
       body: Stack(
         children: [
           WebView(
-            initialUrl: 'https://flutter.dev',
+            initialUrl: 'https://www.google.com',
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (WebViewController webViewController) {
               _controller.complete(webViewController);
             },
             onPageStarted: (_) {
               setState(() {});
+              currentUrl = _;
             },
             onPageFinished: (_) {
+              if (_ == "https://www.pornhub.com/" ||
+                  _ == 'https://www.porhub.com' ||
+                  _ == 'http://www.porhub.com/' ||
+                  _ == 'http://www.porhub.com') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Explicit content detected")),
+                );
+              }
               setState(() {});
             },
           ),
