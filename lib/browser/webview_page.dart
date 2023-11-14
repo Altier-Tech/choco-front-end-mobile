@@ -128,7 +128,10 @@ class _BrowserPageState extends State<BrowserPage> {
                   .navigate; // Allow the original URL loading
             },
             onPageStarted: (_) async {
-              setState(() {});
+              setState(() {
+                _urlController.text =
+                    _; // Update the TextField with the current URL
+              });
               currentUrl = _;
               Future<String> errorPage = readErrorPage();
 
@@ -144,12 +147,10 @@ class _BrowserPageState extends State<BrowserPage> {
               }
             },
             onPageFinished: (_) {
-              // if (_ == "https://www.pornhub.com/") {
-              //   ScaffoldMessenger.of(context).showSnackBar(
-              //     const SnackBar(content: Text("Explicit content detected")),
-              //   );
-              // }
-              setState(() {});
+              setState(() {
+                _urlController.text =
+                    _; // Update the TextField with the current URL
+              });
             },
           ),
           FutureBuilder<WebViewController>(
