@@ -28,6 +28,18 @@ class _BrowserPageState extends State<BrowserPage> {
     }
   }
 
+  Future<bool> isUrlInFile(String url, String filePath) async {
+    try {
+      final file = File(filePath);
+      final lines = await file.readAsLines();
+
+      return lines.contains(url);
+    } catch (e) {
+      print("Couldn't read file: $e");
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,17 +91,12 @@ class _BrowserPageState extends State<BrowserPage> {
             onWebViewCreated: (WebViewController webViewController) {
               _controller.complete(webViewController);
             },
-            navigationDelegate: (NavigationRequest request) {
+            navigationDelegate: (NavigationRequest request) async {
               Future<String> errorPage = readErrorPage();
-
+              String filePath = 'assets/urls.txt';
               // https://www.pornhub.com/
-              List<String> urls = [
-                "https://www.ex1.com/",
-                "https://www.ex2.com/",
-                "https://www.ex3.com/"
-              ];
 
-              if (urls.contains(request.url)) {
+              if (await isUrlInFile(request.url, filePath)) {
                 // Load the custom HTML content instead of the page HTML
                 _controller.future.then((controller) async {
                   controller.loadUrl(Uri.dataFromString(
@@ -98,10 +105,12 @@ class _BrowserPageState extends State<BrowserPage> {
                     encoding: Encoding.getByName('utf-8'),
                   ).toString());
 
-                  return NavigationDecision
-                      .prevent; // Prevent the original URL loading
+                  return NavigationDecision.prevent;
                 });
+              } else {
+                return NavigationDecision.navigate;
               }
+
               return NavigationDecision
                   .navigate; // Allow the original URL loading
             },
