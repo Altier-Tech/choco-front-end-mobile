@@ -19,12 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: MyDrawer(),
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_9_plus),
-            onPressed: () {
-              // Handle square icon tap
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.filter_9_plus),
+          //   onPressed: () {
+          //     // Handle square icon tap
+          //   },
+          // ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
