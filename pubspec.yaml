@@ -77,6 +77,14 @@ flutter:
      - assets/blocked_page.html
      - assets/urls.txt
      - assets/radioactive_bats.png
+     - assets/youtube.png
+     - assets/moodle.png
+     - assets/linkedin.png
+     - assets/sololearn.jpg
+     - assets/github.png
+     - assets/google-translate.png
+     - assets/gmail.png
+     - assets/cisco.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
