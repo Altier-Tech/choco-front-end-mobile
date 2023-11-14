@@ -1,5 +1,6 @@
 import 'package:choco/chat/chat_page.dart';
 import 'package:choco/gpt/chat_api.dart';
+import 'package:choco/screens/settings.dart';
 import 'package:flutter/material.dart';
 
 import '../models/parental_control_items.dart';
@@ -146,12 +147,12 @@ class _ParentalControlState extends State<ParentalControl> {
                     imageUrl: 'browser_settings_img.png',
                     circleColor: Colors.white38,
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => YourDestinationScreen(),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Settings(),
+                        ),
+                      );
                     },
                   ),
                 ],
