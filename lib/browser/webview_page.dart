@@ -19,18 +19,31 @@ class _BrowserPageState extends State<BrowserPage> {
       appBar: AppBar(
         title: TextField(
           controller: _urlController,
-          decoration: InputDecoration(hintText: 'Enter URL here...'),
+          decoration: const InputDecoration(hintText: 'Enter URL here...'),
           onSubmitted: (value) async {
             var url = Uri.tryParse(value);
             if (url != null &&
                 (url.scheme == 'http' || url.scheme == 'https')) {
-              var response = await http.head(url);
-              if (response.statusCode >= 200 && response.statusCode < 400) {
-                (await _controller.future).loadUrl(value);
-              } else {
+              var response = await http.get(url);
+              List<String> keywords = [
+                "porn",
+                "sex",
+                "fuck"
+              ]; // replace with your keywords
+              bool explicitContentDetected =
+                  keywords.any((keyword) => response.body.contains(keyword));
+              if (explicitContentDetected) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("URL can't be loaded")),
+                  const SnackBar(content: Text("Explicit content detected")),
                 );
+              } else {
+                if (response.statusCode >= 200 && response.statusCode < 400) {
+                  (await _controller.future).loadUrl(value);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("URL can't be loaded")),
+                  );
+                }
               }
             } else {
               String googleUrl = 'https://www.google.com/search?q=' +
