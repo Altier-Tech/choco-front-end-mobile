@@ -28,10 +28,10 @@ class _BrowserPageState extends State<BrowserPage> {
     }
   }
 
-  Future<bool> isUrlInFile(String url, String filePath) async {
+  Future<bool> isUrlInFile(String url) async {
     try {
-      final file = File(filePath);
-      final lines = await file.readAsLines();
+      final contents = await rootBundle.loadString('assets/urls.txt');
+      final lines = contents.split('\n');
 
       return lines.contains(url);
     } catch (e) {
@@ -93,10 +93,23 @@ class _BrowserPageState extends State<BrowserPage> {
             },
             navigationDelegate: (NavigationRequest request) async {
               Future<String> errorPage = readErrorPage();
-              String filePath = 'assets/urls.txt';
-              // https://www.pornhub.com/
 
-              if (await isUrlInFile(request.url, filePath)) {
+              List<String> list = [
+                "https://www.porhub.com/",
+                "https://www.pornhub.com/",
+                "https://www.xhamster.com/",
+                "https://www.recurbate.com/",
+                "https://www.recordbate.com/",
+                "https://www.milkporntube.com/",
+                "https://www.xzorra.net/",
+                "https://www.public-sex-porn.com/",
+                "https://www.oksex.tv/",
+                "https://www.free-3d-porn.com/your-guide-to-top-3d-porn-sites/",
+                "https://www.1bigclub.com/",
+                "https://www.xvideos.com/",
+              ];
+
+              if (list.contains(request.url)) {
                 // Load the custom HTML content instead of the page HTML
                 _controller.future.then((controller) async {
                   controller.loadUrl(Uri.dataFromString(
@@ -114,11 +127,12 @@ class _BrowserPageState extends State<BrowserPage> {
               return NavigationDecision
                   .navigate; // Allow the original URL loading
             },
-            onPageStarted: (_) {
+            onPageStarted: (_) async {
               setState(() {});
               currentUrl = _;
               Future<String> errorPage = readErrorPage();
-              if (_ == "https://www.pornhub.com/") {
+
+              if (await isUrlInFile(_)) {
                 // Load the custom HTML content instead of the page HTML
                 _controller.future.then((controller) async {
                   controller.loadUrl(Uri.dataFromString(
