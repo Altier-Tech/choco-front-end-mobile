@@ -1,6 +1,10 @@
+import 'package:choco/screens/bookmarks.dart';
+import 'package:choco/screens/history.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/downloads.dart';
 import '../screens/parental_control.dart';
+import '../screens/settings.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -31,17 +35,32 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.download),
             title: const Text("Downloads"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Downloads()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.access_time_sharp),
             title: const Text("History"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const History()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.star),
             title: const Text("Bookmarks"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Bookmarks()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.indeterminate_check_box_outlined),
@@ -59,7 +78,12 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text("Settings"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.help_outline),
