@@ -19,13 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(Icons.filter_9_plus),
+            icon: const Icon(Icons.filter_9_plus),
             onPressed: () {
               // Handle square icon tap
             },
           ),
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               // Handle setting icon tap
             },
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             MaterialPageRoute(
                                 builder: (context) => ChatScreen()));
                       },
-                      child: Text(
+                      child: const Text(
                         'Choco Chat',
                         style: TextStyle(fontSize: 20),
                       ),
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             //Divider(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
