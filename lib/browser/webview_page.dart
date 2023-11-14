@@ -33,9 +33,9 @@ class _BrowserPageState extends State<BrowserPage> {
                 );
               }
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Invalid URL")),
-              );
+              String googleUrl = 'https://www.google.com/search?q=' +
+                  Uri.encodeQueryComponent(value);
+              (await _controller.future).loadUrl(googleUrl);
             }
           },
         ),
