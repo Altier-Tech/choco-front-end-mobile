@@ -71,10 +71,7 @@ class _BrowserPageState extends State<BrowserPage> {
               currentUrl = _;
             },
             onPageFinished: (_) {
-              if (_ == "https://www.pornhub.com/" ||
-                  _ == 'https://www.porhub.com' ||
-                  _ == 'http://www.porhub.com/' ||
-                  _ == 'http://www.porhub.com') {
+              if (_ == "https://www.pornhub.com/") {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Explicit content detected")),
                 );
