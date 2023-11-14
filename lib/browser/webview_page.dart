@@ -81,7 +81,15 @@ class _BrowserPageState extends State<BrowserPage> {
             },
             navigationDelegate: (NavigationRequest request) {
               Future<String> errorPage = readErrorPage();
-              if (request.url == "https://www.pornhub.com/") {
+
+              // https://www.pornhub.com/
+              List<String> urls = [
+                "https://www.ex1.com/",
+                "https://www.ex2.com/",
+                "https://www.ex3.com/"
+              ];
+
+              if (urls.contains(request.url)) {
                 // Load the custom HTML content instead of the page HTML
                 _controller.future.then((controller) async {
                   controller.loadUrl(Uri.dataFromString(
