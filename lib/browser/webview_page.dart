@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class BrowserPage extends StatefulWidget {
   @override
@@ -14,6 +17,16 @@ class _BrowserPageState extends State<BrowserPage> {
   final TextEditingController _urlController = TextEditingController();
 
   var currentUrl = '';
+
+  Future<String> readErrorPage() async {
+    try {
+      final contents = await rootBundle.loadString('assets/blocked_page.html');
+      // print(contents);
+      return contents;
+    } catch (e) {
+      return e.toString();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +79,45 @@ class _BrowserPageState extends State<BrowserPage> {
             onWebViewCreated: (WebViewController webViewController) {
               _controller.complete(webViewController);
             },
+            navigationDelegate: (NavigationRequest request) {
+              Future<String> errorPage = readErrorPage();
+              if (request.url == "https://www.pornhub.com/") {
+                // Load the custom HTML content instead of the page HTML
+                _controller.future.then((controller) async {
+                  controller.loadUrl(Uri.dataFromString(
+                    await errorPage,
+                    mimeType: 'text/html',
+                    encoding: Encoding.getByName('utf-8'),
+                  ).toString());
+
+                  return NavigationDecision
+                      .prevent; // Prevent the original URL loading
+                });
+              }
+              return NavigationDecision
+                  .navigate; // Allow the original URL loading
+            },
             onPageStarted: (_) {
               setState(() {});
               currentUrl = _;
+              Future<String> errorPage = readErrorPage();
+              if (_ == "https://www.pornhub.com/") {
+                // Load the custom HTML content instead of the page HTML
+                _controller.future.then((controller) async {
+                  controller.loadUrl(Uri.dataFromString(
+                    await errorPage,
+                    mimeType: 'text/html',
+                    encoding: Encoding.getByName('utf-8'),
+                  ).toString());
+                });
+              }
             },
             onPageFinished: (_) {
-              if (_ == "https://www.pornhub.com/") {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Explicit content detected")),
-                );
-              }
+              // if (_ == "https://www.pornhub.com/") {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     const SnackBar(content: Text("Explicit content detected")),
+              //   );
+              // }
               setState(() {});
             },
           ),
