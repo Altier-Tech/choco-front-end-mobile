@@ -1,6 +1,10 @@
 import 'package:choco/browser/webview_page.dart';
+
 import 'package:choco/chat/chat_page.dart';
 import 'package:choco/gpt/chat_api.dart';
+
+import 'package:choco/screens/settings.dart';
+
 import 'package:flutter/material.dart';
 
 import '../models/shortcuts.dart';
@@ -22,16 +26,19 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: MyDrawer(),
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_9_plus),
-            onPressed: () {
-              // Handle square icon tap
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.filter_9_plus),
+          //   onPressed: () {
+          //     // Handle square icon tap
+          //   },
+          // ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // Handle setting icon tap
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
             },
           ),
         ],
@@ -124,7 +131,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
+
               const Divider(),
+              
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Text("Favourite Websites"),
