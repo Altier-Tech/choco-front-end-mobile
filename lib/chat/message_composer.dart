@@ -30,9 +30,9 @@ class MessageComposer extends StatelessWidget {
                         border: InputBorder.none,
                       ),
                     )
-                  : Row(
+                  : const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         SizedBox(
                           height: 24,
                           width: 24,

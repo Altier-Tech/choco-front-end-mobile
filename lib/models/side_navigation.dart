@@ -7,6 +7,8 @@ import '../screens/parental_control.dart';
 import '../screens/settings.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,11 +20,11 @@ class MyDrawer extends StatelessWidget {
             accountEmail: Text("radioactivebats@gmail.com"),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                  child: Image(
-                image: NetworkImage(
-                    "https://mastimorning.com/wp-content/uploads/2023/09/dp-photos.jpg"),
-                fit: BoxFit.cover,
-              )),
+                child: Image(
+                  image: AssetImage('assets/radioactive_bats.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             decoration: BoxDecoration(
                 color: Colors.blue,
@@ -71,7 +73,10 @@ class MyDrawer extends StatelessWidget {
             leading: const Icon(Icons.shield),
             title: const Text("Parental Control"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentalControl()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ParentalControl()));
             },
           ),
           const Divider(),

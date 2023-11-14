@@ -1,9 +1,14 @@
 import 'package:choco/browser/webview_page.dart';
+
+import 'package:choco/chat/chat_page.dart';
+import 'package:choco/gpt/chat_api.dart';
+
 import 'package:choco/screens/settings.dart';
+
 import 'package:flutter/material.dart';
+
 import '../models/shortcuts.dart';
 import '../models/side_navigation.dart';
-import 'choco_chat.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ChatApi chatApi = ChatApi();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChatScreen()));
+                                  builder: (context) =>
+                                      ChatPage(chatApi: chatApi)));
                         },
                         child: const Text(
                           'Choco Chat',
@@ -112,7 +120,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ChatScreen()));
+                                builder: (context) =>
+                                    ChatPage(chatApi: chatApi)));
                       },
                       child: Image.asset(
                         'assets/chat.png',
@@ -122,7 +131,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              Divider(),
+
+              const Divider(),
+              
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Text("Favourite Websites"),

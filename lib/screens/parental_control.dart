@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../models/parental_control_items.dart';
 import 'block_site.dart';
-import 'choco_chat.dart';
 import 'intelligent_service.dart';
 
 class ParentalControl extends StatefulWidget {
@@ -21,7 +20,7 @@ class _ParentalControlState extends State<ParentalControl> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Parental Control"),
+        title: const Text("Parental Control"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40),
@@ -30,7 +29,8 @@ class _ParentalControlState extends State<ParentalControl> {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
               child: Container(
                 width: 350,
                 height: 200,
@@ -51,14 +51,21 @@ class _ParentalControlState extends State<ParentalControl> {
                 ),
               ),
             ),
-            Center(
-              child: Text("Protect your child online",style: TextStyle(color: Colors.purple,fontSize: 15),),
+            const Center(
+              child: Text(
+                "Protect your child online",
+                style: TextStyle(color: Colors.purple, fontSize: 15),
+              ),
             ),
-            Center(
-              child: Text("Safeguard their browsing experience\nand steer clear of unwanted content",style: TextStyle(color: Colors.black,fontSize: 10),),
+            const Center(
+              child: Text(
+                "Safeguard their browsing experience\nand steer clear of unwanted content",
+                style: TextStyle(color: Colors.black, fontSize: 10),
+              ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -89,22 +96,23 @@ class _ParentalControlState extends State<ParentalControl> {
                     },
                   ),
                   CircleShortcut(
-                      name: "Intelligent\nService",
-                      imageUrl: 'intelligent_img.png',
-                      circleColor: Colors.greenAccent,onTap: () {
+                    name: "Intelligent\nService",
+                    imageUrl: 'intelligent_img.png',
+                    circleColor: Colors.greenAccent,
+                    onTap: () {
                       Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => IntelligentService(),
-                      ),
-                    );
-                  },
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const IntelligentService(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
