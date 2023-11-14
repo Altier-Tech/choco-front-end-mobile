@@ -118,7 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              //Divider(),
+              Divider(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: Text("Favourite Websites"),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -133,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     CircleShortcut(
                         name: "LMS",
                         imageUrl:
-                            'https://www.state.gov/wp-content/uploads/2020/07/72-729738_youtube-red-circle-circle-youtube-logo-png-clipart.jpg'),
+                            'https://companyurlfinder.com/marketing/assets/img/logos/moodle.com.png'),
                     CircleShortcut(
                         name: "LinkedIn",
                         imageUrl:
