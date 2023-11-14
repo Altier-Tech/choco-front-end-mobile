@@ -61,9 +61,9 @@ class _BrowserPageState extends State<BrowserPage> {
                 }
               }
             } else {
-              String googleUrl = 'https://www.google.com/search?q=' +
+              String kiddleUrl = 'https://www.kiddle.co/s.php?q=' +
                   Uri.encodeQueryComponent(value);
-              (await _controller.future).loadUrl(googleUrl);
+              (await _controller.future).loadUrl(kiddleUrl);
             }
           },
         ),
