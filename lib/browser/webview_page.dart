@@ -1,159 +1,127 @@
+import 'dart:async';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class BrowserPage extends StatefulWidget {
-  const BrowserPage({Key? key}) : super(key: key);
-
   @override
-  State<BrowserPage> createState() => _BrowserPageState();
+  _BrowserPageState createState() => _BrowserPageState();
 }
 
 class _BrowserPageState extends State<BrowserPage> {
-  late TextEditingController textEditingController;
-  late WebViewController webViewController;
-
-  String searchEngineUrl = "https://www.google.com/";
-  bool isLoading = false;
-
-  @override
-  void initState() {
-    textEditingController = TextEditingController(text: searchEngineUrl);
-    webViewController = WebViewController();
-    webViewController.setJavaScriptMode(JavaScriptMode.unrestricted);
-    webViewController.setNavigationDelegate(NavigationDelegate(
-      onPageStarted: (url) {
-        textEditingController.text = url;
-        setState(() {
-          isLoading = true;
-        });
-      },
-      onPageFinished: (url) {
-        setState(() {
-          isLoading = false;
-        });
-      },
-    ));
-    loadUrl(textEditingController.text);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    textEditingController.dispose();
-    super.dispose();
-  }
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+  final TextEditingController _urlController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: WillPopScope(
-            onWillPop: onWillPop,
-            child: Scaffold(
-              body: constColumn(
-                children: [
-                  _buildTopWidget(),
-                  _buldLoadingWidget(),
-                  Expanded(
-                    child: _buildWebWidget(),
-                  ),
-                  _buildBottomWidget(),
-                ],
-              ),
-            )));
-  }
-
-  Future<bool> onWillPop() {
-    return Future.value(false);
-  }
-
-  loadUrl(String value) {
-    Uri uri = Uri.parse(value);
-    if (!uri.isAbsolute) {
-      uri = Uri.parse("${searchEngineUrl}search?q=$value");
-    }
-    webViewController.loadRequest(uri);
-  }
-
-  _buildTopWidget() {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: const BorderRadius.all(Radius.circular(32)),
+    return Scaffold(
+      appBar: AppBar(
+        title: TextField(
+          controller: _urlController,
+          decoration: InputDecoration(hintText: 'Enter URL here...'),
+          onSubmitted: (value) async {
+            var url = Uri.tryParse(value);
+            if (url != null &&
+                (url.scheme == 'http' || url.scheme == 'https')) {
+              var response = await http.head(url);
+              if (response.statusCode >= 200 && response.statusCode < 400) {
+                (await _controller.future).loadUrl(value);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("URL can't be loaded")),
+                );
+              }
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Invalid URL")),
+              );
+            }
+          },
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () {
-                loadUrl(searchEngineUrl);
-              },
-              icon: const Icon(Icons.home),
-            ),
-            Expanded(
-                child: TextField(
-              controller: textEditingController,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: "Search or type url",
-              ),
-              onSubmitted: (value) {
-                loadUrl(value);
-              },
-            )),
-            IconButton(
-                onPressed: () {
-                  textEditingController.clear();
-                },
-                icon: const Icon(Icons.cancel)),
-          ],
-        ),
+        actions: <Widget>[
+          NavigationControls(_controller.future),
+        ],
+      ),
+      body: Stack(
+        children: [
+          WebView(
+            initialUrl: 'https://flutter.dev',
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller.complete(webViewController);
+            },
+            onPageStarted: (_) {
+              setState(() {});
+            },
+            onPageFinished: (_) {
+              setState(() {});
+            },
+          ),
+          FutureBuilder<WebViewController>(
+              future: _controller.future,
+              builder: (BuildContext context,
+                  AsyncSnapshot<WebViewController> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else {
+                  return Container();
+                }
+              }),
+        ],
       ),
     );
   }
+}
 
-  _buldLoadingWidget() {
-    return Container(
-      height: 2,
-      color: Colors.grey,
-      child: isLoading ? const LinearProgressIndicator() : Container(),
-    );
-  }
+class NavigationControls extends StatelessWidget {
+  const NavigationControls(this._webViewControllerFuture);
 
-  _buildWebWidget() {
-    return const Placeholder();
-  }
+  final Future<WebViewController> _webViewControllerFuture;
 
-  _buildBottomWidget() {
-    return BottomNavigationBar(
-      onTap: (int index) {
-        switch (index) {
-          case 0: // Back
-            webViewController.goBack();
-            break;
-          case 1: // Forward
-            webViewController.goForward();
-            break;
-          case 2: // Reload
-            webViewController.reload();
-            break;
-        }
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<WebViewController>(
+      future: _webViewControllerFuture,
+      builder:
+          (BuildContext context, AsyncSnapshot<WebViewController> snapshot) {
+        final bool webViewReady =
+            snapshot.connectionState == ConnectionState.done;
+        final WebViewController? controller = snapshot.data;
+        return Row(
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.arrow_back_ios),
+              onPressed: !webViewReady || controller == null
+                  ? null
+                  : () async {
+                      if (await controller.canGoBack()) {
+                        controller.goBack();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("No back history item")),
+                        );
+                      }
+                    },
+            ),
+            IconButton(
+              icon: const Icon(Icons.arrow_forward_ios),
+              onPressed: !webViewReady || controller == null
+                  ? null
+                  : () async {
+                      if (await controller?.canGoForward() ?? false) {
+                        controller?.goForward();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text("No forward history item")),
+                        );
+                      }
+                    },
+            ),
+          ],
+        );
       },
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.arrow_back), label: "Back"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward), label: "Forward"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.replay_outlined), label: "Reload"),
-      ],
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      unselectedItemColor: Colors.black54,
-      selectedItemColor: Colors.black54,
     );
   }
-
-  constColumn({required List children}) {}
 }

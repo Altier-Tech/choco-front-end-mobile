@@ -1,5 +1,5 @@
+import 'package:choco/browser/webview_page.dart';
 import 'package:flutter/material.dart';
-import 'package:choco/screens/test_browser_page.dart';
 import '../models/shortcuts.dart';
 import '../models/side_navigation.dart';
 import 'choco_chat.dart';
@@ -55,10 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       EdgeInsets.symmetric(horizontal: 16.0)),
                   onTap: () {
                     //controller.openView();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BrowserPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BrowserPage()));
                   },
                   onChanged: (_) {
                     controller.openView();
