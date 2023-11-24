@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
-import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:http/http.dart' as http;
+import 'package:webview_flutter/webview_flutter.dart';
 
 class BrowserPage extends StatefulWidget {
+  const BrowserPage({super.key});
+
   @override
   _BrowserPageState createState() => _BrowserPageState();
 }
@@ -73,8 +75,8 @@ class _BrowserPageState extends State<BrowserPage> {
                 }
               }
             } else {
-              String kiddleUrl = 'https://www.kiddle.co/s.php?q=' +
-                  Uri.encodeQueryComponent(value);
+              String kiddleUrl =
+                  'https://www.kiddle.co/s.php?q=${Uri.encodeQueryComponent(value)}';
               (await _controller.future).loadUrl(kiddleUrl);
             }
           },
@@ -95,18 +97,10 @@ class _BrowserPageState extends State<BrowserPage> {
               Future<String> errorPage = readErrorPage();
 
               List<String> list = [
-                "https://www.porhub.com/",
-                "https://www.pornhub.com/",
-                "https://www.xhamster.com/",
-                "https://www.recurbate.com/",
-                "https://www.recordbate.com/",
-                "https://www.milkporntube.com/",
-                "https://www.xzorra.net/",
-                "https://www.public-sex-porn.com/",
-                "https://www.oksex.tv/",
-                "https://www.free-3d-porn.com/your-guide-to-top-3d-porn-sites/",
-                "https://www.1bigclub.com/",
-                "https://www.xvideos.com/",
+                "https://www.facebook.com/",
+                "https://web.facebook.com/?_rdc=1&_rdr",
+                "https://web.facebook.com/",
+                "https://m.facebook.com/",
               ];
 
               if (list.contains(request.url)) {
@@ -158,7 +152,7 @@ class _BrowserPageState extends State<BrowserPage> {
               builder: (BuildContext context,
                   AsyncSnapshot<WebViewController> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else {
                   return Container();
                 }
@@ -170,7 +164,7 @@ class _BrowserPageState extends State<BrowserPage> {
 }
 
 class NavigationControls extends StatelessWidget {
-  const NavigationControls(this._webViewControllerFuture);
+  const NavigationControls(this._webViewControllerFuture, {super.key});
 
   final Future<WebViewController> _webViewControllerFuture;
 
@@ -204,8 +198,8 @@ class NavigationControls extends StatelessWidget {
               onPressed: !webViewReady || controller == null
                   ? null
                   : () async {
-                      if (await controller?.canGoForward() ?? false) {
-                        controller?.goForward();
+                      if (await controller.canGoForward() ?? false) {
+                        controller.goForward();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
