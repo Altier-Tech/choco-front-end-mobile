@@ -71,8 +71,8 @@ class _ParentalControlState extends State<ParentalControl> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleShortcut(
-                    name: "Block/Unblock\nSites",
-                    imageUrl: 'block_sites.svg',
+                    name: "Block/Unblock\n         Sites",
+                    imageUrl: 'block_sites.png',
                     circleColor: Colors.red,
                     onTap: () {
                       Navigator.push(
@@ -84,7 +84,7 @@ class _ParentalControlState extends State<ParentalControl> {
                     },
                   ),
                   CircleShortcut(
-                    name: "Choco\nChat",
+                    name: "Choco\n Chat",
                     imageUrl: 'chat.png',
                     circleColor: Colors.black12,
                     onTap: () {
@@ -97,7 +97,7 @@ class _ParentalControlState extends State<ParentalControl> {
                     },
                   ),
                   CircleShortcut(
-                    name: "Intelligent\nService",
+                    name: "Intelligent\n  Service",
                     imageUrl: 'intelligent_img.png',
                     circleColor: Colors.greenAccent,
                     onTap: () {
@@ -130,7 +130,7 @@ class _ParentalControlState extends State<ParentalControl> {
                     },
                   ),
                   CircleShortcut(
-                    name: "Setup Child\nProfile",
+                    name: "Setup Child\n     Profile",
                     imageUrl: 'child_profile_img.png',
                     circleColor: Colors.yellow,
                     onTap: () {
