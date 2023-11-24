@@ -6,7 +6,8 @@ class CircleShortcut extends StatelessWidget {
   final Color circleColor; // New parameter for circle color
   final VoidCallback onTap; // Callback to handle onTap event
 
-  CircleShortcut({
+  const CircleShortcut({
+    super.key,
     required this.name,
     required this.imageUrl,
     this.circleColor = Colors.blue, // Default color is set to blue
@@ -31,7 +32,10 @@ class CircleShortcut extends StatelessWidget {
               backgroundColor: Colors.transparent,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(
+            height: 8,
+            width: 2,
+          ),
           Center(
             child: Text(name),
           )
