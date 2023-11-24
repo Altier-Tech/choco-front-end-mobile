@@ -43,6 +43,7 @@ dependencies:
   http: ^1.1.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.9.2"
   flutter_test:
     sdk: flutter
 
@@ -67,12 +68,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/chat.png
-     - assets/block_sites.svg
+     - assets/block_sites.png
      - assets/browser_settings_img.png
      - assets/logo.png
      - assets/safe_browsing.jpg
      - assets/child_profile_img.png
-     - assets/choco_engine_img.png
+     - assets/Choco_engine_img.png
      - assets/intelligent_img.png
      - assets/blocked_page.html
      - assets/urls.txt
@@ -111,3 +112,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+  android: true
+  image_path: "assets/logo.png"
